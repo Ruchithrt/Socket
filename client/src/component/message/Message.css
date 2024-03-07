@@ -10,7 +10,7 @@
 
 .right {
   float: right;
-  background-color: crimson;
+  background-color: rgb(28, 97, 200);
   color: white;
   text-align: right;
 }
@@ -18,5 +18,5 @@
 .left {
   float: left;
   text-align: left;
-  background-color: rgb(196, 255, 184);
+  background-color: rgb(226, 252, 134);
 }

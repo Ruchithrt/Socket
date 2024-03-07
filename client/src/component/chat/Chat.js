@@ -30,8 +30,10 @@ const Chat = () => {
       setid(socket.id);
     });
     console.log(socket);
-    socket.emit("joined", { user });
 
+    socket.emit("joined", { user }); // socket.emit  means to send
+
+    // socket.on means to receive
     socket.on("welcome", (data) => {
       setMessages([...messages, data]);
       console.log(data.user, data.message);
@@ -69,7 +71,6 @@ const Chat = () => {
         <div className="header">
           <h2>CHAT</h2>
           <a href="/">
-            {" "}
             <img src={closeIcon} alt="Close" />
           </a>
         </div>
@@ -83,8 +84,18 @@ const Chat = () => {
           ))}
         </ReactScrollToBottom>
         <div className="inputBox">
-          <input
+          {/* <input
             onKeyPress={(event) => (event.key === "Enter" ? send() : null)}
+            type="text"
+            id="chatInput"
+          /> */}
+          <input
+            onKeyDown={(event) => {
+              if (event.key === "Enter") {
+                event.preventDefault(); // Prevents the newline character from being added
+                send();
+              }
+            }}
             type="text"
             id="chatInput"
           />
